@@ -125,6 +125,51 @@ func TestPembayaranBarang(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "pass in cicil, metode pembayaran credit, and harga total >= 500000",
+			args: args{
+				hargaTotal: 540000,
+				metode:     "credit",
+				cicil:      true,
+			},
+			wantErr: false,
+		},
+		{
+			name: "pass in not cicil, metode pembayaran cod",
+			args: args{
+				hargaTotal: 10000,
+				metode:     "cod",
+				cicil:      false,
+			},
+			wantErr: false,
+		},
+		{
+			name: "pass in not cicil, metode pembayaran transfer",
+			args: args{
+				hargaTotal: 10000,
+				metode:     "transfer",
+				cicil:      false,
+			},
+			wantErr: false,
+		},
+		{
+			name: "pass in not cicil, metode pembayaran gerai",
+			args: args{
+				hargaTotal: 10000,
+				metode:     "gerai",
+				cicil:      false,
+			},
+			wantErr: false,
+		},
+		{
+			name: "pass in not cicil, metode pembayaran debit",
+			args: args{
+				hargaTotal: 10000,
+				metode:     "debit",
+				cicil:      false,
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
